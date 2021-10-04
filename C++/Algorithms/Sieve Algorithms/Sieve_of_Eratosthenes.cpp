@@ -8,22 +8,19 @@ using namespace std;
 
 void sieve_of_eratosthenes(int n)
 {
-    /*
-    This will print all 
-    prime number less than n
-    */
+    
 
-    // Initially all are prime
+    
     bool *prime = new bool[n];
     for (int i = 0; i < n; i++)
     {
         prime[i] = true;
     }
 
-    // Now we start marking multiples of every number non-prime
+    
     for (int i = 2; i * i <= n; i++)
     {
-        // We start from first multiple and go till n
+       
         for (int j = 2 * i; j < n; j += i)
         {
             prime[j] = false;
@@ -37,6 +34,32 @@ void sieve_of_eratosthenes(int n)
         }
     }
 }
+
+void SieveOfEratosthenes(int n)
+{
+     
+    bool prime[n + 1];
+    memset(prime, true, sizeof(prime));
+ 
+    for (int p = 2; p * p <= n; p++)
+    {
+         
+        if (prime[p] == true)
+        {
+             
+            for (int i = p * p; i <= n; i += p)
+                prime[i] = false;
+        }
+    }
+ 
+    
+    for (int p = 2; p <= n; p++)
+        if (prime[p])
+            cout << p << " ";
+}
+
+
+
 
 int main()
 {
